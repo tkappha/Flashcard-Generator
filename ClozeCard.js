@@ -12,3 +12,13 @@
 // The constructor should throw or log an error when the cloze deletion does not appear in the input text.
 // Use prototypes to attach these methods, wherever possible.
 //*************************************************************************
+
+function ClozeCard(text, cloze) {
+	if (this instanceof ClozeCard){
+		this.text = text;
+		this.cloze = cloze;
+	} else {
+		return new ClozeCard(text, cloze);
+	}
+}
+
