@@ -13,12 +13,32 @@
 // Use prototypes to attach these methods, wherever possible.
 //*************************************************************************
 
+module.exports = ClozeCard;
+
 function ClozeCard(text, cloze) {
 	if (this instanceof ClozeCard){
-		this.text = text;
+		this.fullText = text;
 		this.cloze = cloze;
 	} else {
 		return new ClozeCard(text, cloze);
 	}
 }
+
+
+// 
+ClozeCard.prototype.partial = function() {
+	//where cloze is found in text, replaces cloze with ...
+	var replaceCloze = " .... ";
+	
+	this.fullText.replace(this.cloze, replaceCloze);
+};
+
+
+
+///****** Testing ******************
+var card1 = ClozeCard("This is the full text.", "text");
+console.log("fullText: " + card1.fullText);
+// console.log("Cloze: " + card1.cloze);
+console.log(card1.partial());
+
 
